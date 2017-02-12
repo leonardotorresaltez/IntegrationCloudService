@@ -1,0 +1,29 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ns0:ApplicationInstance xmlns:ns0="http://xmlns.oracle.com/adapters/cloud">
+  <id>2a1a9e5c-fd1c-404a-8aed-5e18cc7121f9</id>
+  <instanceCode>RESTYAHOO</instanceCode>
+  <displayName>restyahoo</displayName>
+  <applicationTypeRef>rest</applicationTypeRef>
+  <description>weather</description>
+  <connectionProperties>
+    <connectionProperty>
+      <name>integration_role</name>
+      <value>SOURCE_AND_TARGET</value>
+    </connectionProperty>
+    <connectionProperty>
+      <name>connectionType</name>
+      <value>restUrl</value>
+    </connectionProperty>
+    <connectionProperty>
+      <name>connectionUrl</name>
+      <value>%%RESTYAHOO_connectionUrl</value>
+    </connectionProperty>
+  </connectionProperties>
+  <securityPolicy>NONE</securityPolicy>
+  <revision>01.00.0000</revision>
+  <status>CONFIGURED</status>
+  <hidden>false</hidden>
+  <percentageComplete>100</percentageComplete>
+  <attachments/>
+  <integrationRole>SOURCE_AND_TARGET</integrationRole>
+</ns0:ApplicationInstance>

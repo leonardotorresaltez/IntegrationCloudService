@@ -1,0 +1,258 @@
+<wsdl:definitions targetNamespace="http://xmlns.oracle.com/cloud/adapter/REST/restyahoo_REQUEST" xmlns:ns0="http://xmlns.oracle.com/cloud/adapter/REST/restyahoo_REQUEST/types" xmlns:ns1="http://xmlns.oracle.com/cloud/adapter/REST/restyahoo_REQUEST" xmlns:ns2="http://xmlns.oracle.com/cloud/generic/rest/fault/REST/restyahoo" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns="http://schemas.xmlsoap.org/wsdl/soap/">
+  <casdk:RuntimeIntegrationModel xmlns:casdk="http://xml.oracle.com/wsdl/extensions">
+    <casdk:sourceWSDLMetadata>
+      <casdk:targetWSDLNS>http://xmlns.oracle.com/cloud/adapter/REST/restyahoo_REQUEST</casdk:targetWSDLNS>
+      <casdk:soapVersion>SOAP11</casdk:soapVersion>
+    </casdk:sourceWSDLMetadata>
+  </casdk:RuntimeIntegrationModel>
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://xml.oracle.com/types/REST/restyahoo_REQUEST" xmlns="http://xml.oracle.com/types/REST/restyahoo_REQUEST" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://xml.oracle.com/adapters/extension">
+      <xs:complexType name="QueryParameters">
+        <xs:annotation>
+          <xs:appinfo/>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="q" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="format" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/cloud/adapter/REST/restyahoo/types" nxsd:version="JSON" nxsd:encoding="UTF-8" xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd" xmlns="http://xmlns.oracle.com/cloud/adapter/REST/restyahoo/types" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:element name="response-wrapper">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="query">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="count" type="xsd:integer"/>
+                  <xsd:element name="created" type="xsd:string"/>
+                  <xsd:element name="lang" type="xsd:string"/>
+                  <xsd:element name="diagnostics">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="publiclyCallable" type="xsd:string"/>
+                        <xsd:element name="url" maxOccurs="unbounded">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element name="execution-start-time" type="xsd:string"/>
+                              <xsd:element name="execution-stop-time" type="xsd:string"/>
+                              <xsd:element name="execution-time" type="xsd:string"/>
+                              <xsd:element name="content" type="xsd:string"/>
+                            </xsd:sequence>
+                          </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="javascript">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element name="execution-start-time" type="xsd:string"/>
+                              <xsd:element name="execution-stop-time" type="xsd:string"/>
+                              <xsd:element name="execution-time" type="xsd:string"/>
+                              <xsd:element name="instructions-used" type="xsd:string"/>
+                              <xsd:element name="table-name" type="xsd:string"/>
+                            </xsd:sequence>
+                          </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="user-time" type="xsd:string"/>
+                        <xsd:element name="service-time" type="xsd:string"/>
+                        <xsd:element name="build-version" type="xsd:string"/>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="results">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="channel" maxOccurs="unbounded">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element name="units">
+                                <xsd:complexType>
+                                  <xsd:sequence>
+                                    <xsd:element name="distance" type="xsd:string"/>
+                                    <xsd:element name="pressure" type="xsd:string"/>
+                                    <xsd:element name="speed" type="xsd:string"/>
+                                    <xsd:element name="temperature" type="xsd:string"/>
+                                  </xsd:sequence>
+                                </xsd:complexType>
+                              </xsd:element>
+                              <xsd:element name="title" type="xsd:string"/>
+                              <xsd:element name="link" type="xsd:string"/>
+                              <xsd:element name="description" type="xsd:string"/>
+                              <xsd:element name="language" type="xsd:string"/>
+                              <xsd:element name="lastBuildDate" type="xsd:string"/>
+                              <xsd:element name="ttl" type="xsd:string"/>
+                              <xsd:element name="location">
+                                <xsd:complexType>
+                                  <xsd:sequence>
+                                    <xsd:element name="city" type="xsd:string"/>
+                                    <xsd:element name="country" type="xsd:string"/>
+                                    <xsd:element name="region" type="xsd:string"/>
+                                  </xsd:sequence>
+                                </xsd:complexType>
+                              </xsd:element>
+                              <xsd:element name="wind">
+                                <xsd:complexType>
+                                  <xsd:sequence>
+                                    <xsd:element name="chill" type="xsd:string"/>
+                                    <xsd:element name="direction" type="xsd:string"/>
+                                    <xsd:element name="speed" type="xsd:string"/>
+                                  </xsd:sequence>
+                                </xsd:complexType>
+                              </xsd:element>
+                              <xsd:element name="atmosphere">
+                                <xsd:complexType>
+                                  <xsd:sequence>
+                                    <xsd:element name="humidity" type="xsd:string"/>
+                                    <xsd:element name="pressure" type="xsd:string"/>
+                                    <xsd:element name="rising" type="xsd:string"/>
+                                    <xsd:element name="visibility" type="xsd:string"/>
+                                  </xsd:sequence>
+                                </xsd:complexType>
+                              </xsd:element>
+                              <xsd:element name="astronomy">
+                                <xsd:complexType>
+                                  <xsd:sequence>
+                                    <xsd:element name="sunrise" type="xsd:string"/>
+                                    <xsd:element name="sunset" type="xsd:string"/>
+                                  </xsd:sequence>
+                                </xsd:complexType>
+                              </xsd:element>
+                              <xsd:element name="image">
+                                <xsd:complexType>
+                                  <xsd:sequence>
+                                    <xsd:element name="title" type="xsd:string"/>
+                                    <xsd:element name="width" type="xsd:string"/>
+                                    <xsd:element name="height" type="xsd:string"/>
+                                    <xsd:element name="link" type="xsd:string"/>
+                                    <xsd:element name="url" type="xsd:string"/>
+                                  </xsd:sequence>
+                                </xsd:complexType>
+                              </xsd:element>
+                              <xsd:element name="item">
+                                <xsd:complexType>
+                                  <xsd:sequence>
+                                    <xsd:element name="title" type="xsd:string"/>
+                                    <xsd:element name="lat" type="xsd:string"/>
+                                    <xsd:element name="long" type="xsd:string"/>
+                                    <xsd:element name="link" type="xsd:string"/>
+                                    <xsd:element name="pubDate" type="xsd:string"/>
+                                    <xsd:element name="condition">
+                                      <xsd:complexType>
+                                        <xsd:sequence>
+                                          <xsd:element name="code" type="xsd:string"/>
+                                          <xsd:element name="date" type="xsd:string"/>
+                                          <xsd:element name="temp" type="xsd:string"/>
+                                          <xsd:element name="text" type="xsd:string"/>
+                                        </xsd:sequence>
+                                      </xsd:complexType>
+                                    </xsd:element>
+                                    <xsd:element name="forecast" maxOccurs="unbounded">
+                                      <xsd:complexType>
+                                        <xsd:sequence>
+                                          <xsd:element name="code" type="xsd:string"/>
+                                          <xsd:element name="date" type="xsd:string"/>
+                                          <xsd:element name="day" type="xsd:string"/>
+                                          <xsd:element name="high" type="xsd:string"/>
+                                          <xsd:element name="low" type="xsd:string"/>
+                                          <xsd:element name="text" type="xsd:string"/>
+                                        </xsd:sequence>
+                                      </xsd:complexType>
+                                    </xsd:element>
+                                    <xsd:element name="description" type="xsd:string"/>
+                                    <xsd:element name="guid">
+                                      <xsd:complexType>
+                                        <xsd:sequence>
+                                          <xsd:element name="isPermaLink" type="xsd:string"/>
+                                        </xsd:sequence>
+                                      </xsd:complexType>
+                                    </xsd:element>
+                                  </xsd:sequence>
+                                </xsd:complexType>
+                              </xsd:element>
+                            </xsd:sequence>
+                          </xsd:complexType>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/cloud/generic/rest/fault/REST/restyahoo" nxsd:version="JSON" nxsd:encoding="UTF-8" xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd" xmlns="http://xmlns.oracle.com/cloud/generic/rest/fault/REST/restyahoo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:element name="APIInvocationError">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="type" type="xsd:string"/>
+            <xsd:element name="title" type="xsd:string"/>
+            <xsd:element name="detail" type="xsd:string"/>
+            <xsd:element name="errorCode" type="xsd:string"/>
+            <xsd:element name="errorDetails" maxOccurs="unbounded">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="type" type="xsd:string"/>
+                  <xsd:element name="instance" type="xsd:string"/>
+                  <xsd:element name="title" type="xsd:string"/>
+                  <xsd:element name="errorPath" type="xsd:string"/>
+                  <xsd:element name="errorCode" type="xsd:string"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/cloud/adapter/REST/restyahoo_REQUEST/types" nxsd:version="JSON" nxsd:encoding="UTF-8" xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd" xmlns="http://xmlns.oracle.com/cloud/adapter/REST/restyahoo/types" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns3="http://xml.oracle.com/types/REST/restyahoo_REQUEST" xmlns:tns0="http://xmlns.oracle.com/cloud/adapter/REST/restyahoo_REQUEST/types" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns4="http://xmlns.oracle.com/cloud/adapter/REST/restyahoo/types">
+      <xs:import namespace="http://xmlns.oracle.com/cloud/adapter/REST/restyahoo/types"/>
+      <xs:import namespace="http://xml.oracle.com/types/REST/restyahoo_REQUEST"/>
+      <xs:element name="execute" type="tns0:executeType"/>
+      <xs:complexType name="executeType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" type="ns3:QueryParameters" name="QueryParameters"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="executeResponse" type="tns0:executeResponseType"/>
+      <xs:complexType name="executeResponseType">
+        <xs:sequence>
+          <xs:element ref="ns4:response-wrapper"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="executeRequestMessage">
+    <wsdl:part name="parameters" element="ns0:execute"/>
+  </wsdl:message>
+  <wsdl:message name="executeResponseMessage">
+    <wsdl:part name="parameters" element="ns0:executeResponse"/>
+  </wsdl:message>
+  <wsdl:message name="APIInvocationError">
+    <wsdl:part name="parameters" element="ns2:APIInvocationError"/>
+  </wsdl:message>
+  <wsdl:portType name="restyahoo_REQUESTPortType">
+    <wsdl:operation name="execute">
+      <cloud:CloudOperation targetOperation="execute" xmlns:cloud="http://xml.oracle.com/types"/>
+      <wsdl:input message="ns1:executeRequestMessage"/>
+      <wsdl:output message="ns1:executeResponseMessage"/>
+      <wsdl:fault name="APIInvocationError" message="ns1:APIInvocationError"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="restyahoo_REQUESTPortType-binding" type="ns1:restyahoo_REQUESTPortType">
+    <binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="execute">
+      <operation soapAction="http://xmlns.oracle.com/cloud/adapter/REST/restyahoo_REQUEST/execute"/>
+      <wsdl:input>
+        <body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <plnk:partnerLinkType name="restyahoo_113_inbound_123" xmlns="">
+    <plnk:role name="restyahoo_REQUESTPortType">
+      <plnk:portType name="ns1:restyahoo_REQUESTPortType"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+</wsdl:definitions>

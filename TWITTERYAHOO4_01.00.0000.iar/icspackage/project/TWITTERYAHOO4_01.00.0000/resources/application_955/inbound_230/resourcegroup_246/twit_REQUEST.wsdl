@@ -1,0 +1,247 @@
+<wsdl:definitions targetNamespace="http://xmlns.oracle.com/cloud/adapter/twitter/twit" xmlns:ns0="http://xmlns.oracle.com/cloud/adapter/twitter/twit/types" xmlns:ns1="http://xmlns.oracle.com/cloud/adapter/twitter/twit" xmlns:ns2="http://xmlns.oracle.com/cloud/generic/rest/fault/twitter/null" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/cloud/adapter/twitter/twit/types" xmlns="http://xmlns.oracle.com/cloud/adapter/twitter/twit/types" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://xml.oracle.com/adapters/extension" xmlns:tns0="http://xmlns.oracle.com/cloud/adapter/twitter/twit/types">
+      <xs:element name="Tweet" type="tns0:TweetType"/>
+      <xs:complexType name="TweetType">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="0" type="QueryParameters" name="QueryParameters"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="QueryParameters">
+        <xs:annotation>
+          <xs:appinfo/>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="status" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="in_reply_to_status_id" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="possibly_sensitive" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="lat" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="long" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="place_id" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="display_coordinates" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="trim_user" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="media_ids" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="TweetResponse" type="tns0:TweetResponseType"/>
+      <xs:complexType name="TweetResponseType">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="0" type="tns0:tweetMessage.definitions.tweetResponse" name="tweetMessage.definitions.tweetResponse"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="tweetMessage.definitions.tweetResponse">
+        <xs:annotation>
+          <xs:appinfo>
+            <ns1:custom>false</ns1:custom>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="favorited" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="created_at" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="truncated" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="id_str" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="entities" type="tns0:tweetMessage.definitions.tweetResponse.entities" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="retweet_count" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="id" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="retweeted" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="user" type="tns0:tweetMessage.definitions.tweetResponse.user" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="source" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="tweetMessage.definitions.tweetResponse.entities">
+        <xs:annotation>
+          <xs:appinfo>
+            <ns1:custom>false</ns1:custom>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="urls" type="tns0:tweetMessage.definitions.tweetResponse.entities.urls" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="hashtags" type="tns0:tweetMessage.definitions.tweetResponse.entities.hashtags" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="tweetMessage.definitions.tweetResponse.entities.urls">
+        <xs:annotation>
+          <xs:appinfo>
+            <ns1:custom>false</ns1:custom>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="expanded_url" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="url" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="display_url" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="tweetMessage.definitions.tweetResponse.entities.hashtags">
+        <xs:annotation>
+          <xs:appinfo>
+            <ns1:custom>false</ns1:custom>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="tweetMessage.definitions.tweetResponse.user">
+        <xs:annotation>
+          <xs:appinfo>
+            <ns1:custom>false</ns1:custom>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="profile_sidebar_border_color" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="profile_sidebar_fill_color" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="profile_background_tile" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="profile_image_url" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="created_at" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="location" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="is_translator" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="follow_request_sent" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="id_str" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="profile_link_color" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="entities" type="tns0:tweetMessage.definitions.tweetResponse.user.entities" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="default_profile" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="contributors_enabled" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="url" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="favourites_count" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="utc_offset" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="id" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="profile_image_url_https" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="profile_use_background_image" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="listed_count" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="profile_text_color" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="protected" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="lang" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="followers_count" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="time_zone" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="profile_background_image_url_https" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="verified" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="profile_background_color" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="notifications" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="geo_enabled" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="statuses_count" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="default_profile_image" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="friends_count" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="profile_background_image_url" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="show_all_inline_media" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="screen_name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="following" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="tweetMessage.definitions.tweetResponse.user.entities">
+        <xs:annotation>
+          <xs:appinfo>
+            <ns1:custom>false</ns1:custom>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="url" type="tns0:tweetMessage.definitions.tweetResponse.user.entities.url" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="description" type="tns0:tweetMessage.definitions.tweetResponse.user.entities.description" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="tweetMessage.definitions.tweetResponse.user.entities.url">
+        <xs:annotation>
+          <xs:appinfo>
+            <ns1:custom>false</ns1:custom>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="urls" type="tns0:tweetMessage.definitions.tweetResponse.user.entities.url.urls" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="tweetMessage.definitions.tweetResponse.user.entities.url.urls">
+        <xs:annotation>
+          <xs:appinfo>
+            <ns1:custom>false</ns1:custom>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="expanded_url" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="url" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="display_url" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="tweetMessage.definitions.tweetResponse.user.entities.description">
+        <xs:annotation>
+          <xs:appinfo>
+            <ns1:custom>false</ns1:custom>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="urls" type="tns0:tweetMessage.definitions.tweetResponse.user.entities.description.urls" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="tweetMessage.definitions.tweetResponse.user.entities.description.urls">
+        <xs:annotation>
+          <xs:appinfo>
+            <ns1:custom>false</ns1:custom>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="expanded_url" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="url" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="display_url" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/cloud/generic/rest/fault/twitter/null" nxsd:version="JSON" nxsd:encoding="UTF-8" xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd" xmlns="http://xmlns.oracle.com/cloud/generic/rest/fault/twitter/null" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:element name="APIInvocationError">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="type" type="xsd:string"/>
+            <xsd:element name="title" type="xsd:string"/>
+            <xsd:element name="detail" type="xsd:string"/>
+            <xsd:element name="errorCode" type="xsd:string"/>
+            <xsd:element name="errorDetails" maxOccurs="unbounded">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="type" type="xsd:string"/>
+                  <xsd:element name="instance" type="xsd:string"/>
+                  <xsd:element name="title" type="xsd:string"/>
+                  <xsd:element name="errorPath" type="xsd:string"/>
+                  <xsd:element name="errorCode" type="xsd:string"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="TweetRequestMessage">
+    <wsdl:part name="parameters" element="ns0:Tweet"/>
+  </wsdl:message>
+  <wsdl:message name="TweetResponseMessage">
+    <wsdl:part name="parameters" element="ns0:TweetResponse"/>
+  </wsdl:message>
+  <wsdl:message name="APIInvocationError">
+    <wsdl:part name="parameters" element="ns2:APIInvocationError"/>
+  </wsdl:message>
+  <wsdl:portType name="twit_REQUESTPortType">
+    <wsdl:operation name="Tweet">
+      <cloud:CloudOperation targetOperation="Tweet" xmlns:cloud="http://xml.oracle.com/types"/>
+      <wsdl:input message="ns1:TweetRequestMessage"/>
+      <wsdl:output message="ns1:TweetResponseMessage"/>
+      <wsdl:fault name="APIInvocationError" message="ns1:APIInvocationError"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="twit_REQUESTPortType-binding" type="ns1:twit_REQUESTPortType">
+    <binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Tweet">
+      <operation soapAction="http://xmlns.oracle.com/cloud/adapter/twitter/twit/Tweet"/>
+      <wsdl:input>
+        <body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <plnk:partnerLinkType name="twit_955_inbound_230" xmlns="">
+    <plnk:role name="twit_REQUESTPortType">
+      <plnk:portType name="ns1:twit_REQUESTPortType"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+</wsdl:definitions>

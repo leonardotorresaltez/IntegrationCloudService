@@ -1,0 +1,20 @@
+<adapter-config xsdTargetNamespace="http://xmlns.oracle.com/cloud/adapter/REST/ProxyTwitterYahoo_REQUEST/types" name="ProxyTwitterYahoo_REQUESTPortType" adapter="REST" wsdlLocation="ProxyTwitterYahoo_REQUEST.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  <connection-factory location="cloud/CloudAdapter">
+    <non-managed-connection managedConnectionFactoryClassName="oracle.cloud.connector.rest.RestAdapterConnectionFactory">
+      <property name="securityPolicy" value="NONE"/>
+      <property name="cloud.adapter.sdk.version" value="16.3.3"/>
+      <property name="cloud.adapter.plugin.version" value="16.3.3"/>
+      <property name="connectionUrl" value="%%PROXYSERVICEYAHOOTWITTER_connectionUrl"/>
+    </non-managed-connection>
+  </connection-factory>
+  <endpoint-activation portType="ProxyTwitterYahoo_REQUESTPortType" operation="execute">
+    <activation-spec className="oracle.tip.adapter.cloud.CloudActivationSpec">
+      <property name="targetOperation" value="execute"/>
+      <property name="ResourceURI" value="/{ciudad}/{pais}"/>
+      <property name="HTTPHeadersAdded" value="true"/>
+      <property name="generatePartnerLink" value="false"/>
+      <property name="HttpVerb" value="GET"/>
+      <property name="QueryParameters" value=""/>
+    </activation-spec>
+  </endpoint-activation>
+</adapter-config>

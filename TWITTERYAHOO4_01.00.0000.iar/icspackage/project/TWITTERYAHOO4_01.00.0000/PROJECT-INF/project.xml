@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns0:icsproject xmlns="http://www.oracle.com/2014/03/ics/flow/definition" xmlns:ns1="http://www.oracle.com/2014/03/ics/project/definition" xmlns:ns0="http://www.oracle.com/2014/03/ics/project" name="project_1" version="4.0" modelType="freeform">
+   <ns1:projectCode>TWITTERYAHOO4</ns1:projectCode>
+   <ns1:projectVersion>01.00.0000</ns1:projectVersion>
+   <ns1:projectName>twitteryahoo4</ns1:projectName>
+   <ns1:percentComplete>100</ns1:percentComplete>
+   <ns0:icsflow name="flow_1">
+      <application name="application_875">
+         <role>source</role>
+         <adapter>
+            <type>app-adapter</type>
+            <code>PROXYSERVICEYAHOOTWITTER</code>
+            <name>ProxyTwitterYahoo</name>
+            <property name="hasAttachment" value="false"/>
+         </adapter>
+         <mep>push-sync</mep>
+         <outbound name="outbound_449">
+            <binding>rest</binding>
+            <operation>execute</operation>
+            <resourceGroup name="resourcegroup_781">
+               <resource name="resource_467" location="../resources/application_875/outbound_449/resourcegroup_781/ProxyTwitterYahoo_REQUEST.jca" type="jca"/>
+               <resource name="resource_894" location="../resources/application_875/outbound_449/resourcegroup_781/ProxyTwitterYahoo_REQUEST.wadl" type="wadl"/>
+               <resource name="resource_996" location="../resources/application_875/outbound_449/resourcegroup_781/ProxyTwitterYahoo_REQUEST.wsdl" type="wsdl"/>
+            </resourceGroup>
+            <input name="input_526">
+               <role>response</role>
+               <messageContextRef refUri="messagecontext_604"/>
+            </input>
+            <input name="input_643">
+               <role>fault</role>
+               <subRole>APIInvocationError</subRole>
+               <messageContextRef refUri="messagecontext_946"/>
+            </input>
+            <output name="output_611">
+               <role>request</role>
+               <messageContextRef refUri="messagecontext_872"/>
+            </output>
+         </outbound>
+      </application>
+      <application name="application_113">
+         <role>target</role>
+         <adapter>
+            <type>app-adapter</type>
+            <code>RESTYAHOO</code>
+            <name>restyahoo</name>
+            <property name="hasAttachment" value="false"/>
+         </adapter>
+         <mep>push-sync</mep>
+         <inbound name="inbound_123">
+            <binding>rest</binding>
+            <operation>execute</operation>
+            <resourceGroup name="resourcegroup_883">
+               <resource name="resource_830" location="../resources/application_113/inbound_123/resourcegroup_883/restyahoo_REQUEST.wsdl" type="wsdl"/>
+               <resource name="resource_141" location="../resources/application_113/inbound_123/resourcegroup_883/restyahoo_REQUEST.jca" type="jca"/>
+               <resource name="resource_116" location="../resources/application_113/inbound_123/resourcegroup_883/ICSFault.xsd" type="xsd"/>
+               <resource name="resource_862" location="../resources/application_113/inbound_123/resourcegroup_883/restyahoo_REQUEST.wadl" type="wadl"/>
+            </resourceGroup>
+            <input name="input_429">
+               <role>request</role>
+               <messageContextRef refUri="messagecontext_573"/>
+            </input>
+            <output name="output_194">
+               <role>response</role>
+               <messageContextRef refUri="messagecontext_207"/>
+            </output>
+            <output name="output_899">
+               <role>fault</role>
+               <subRole>APIInvocationError</subRole>
+               <messageContextRef refUri="messagecontext_755"/>
+            </output>
+         </inbound>
+      </application>
+      <application name="application_955">
+         <role>target</role>
+         <adapter>
+            <type>app-adapter</type>
+            <code>TWIITERCONECTION</code>
+            <name>twit</name>
+            <property name="hasAttachment" value="false"/>
+         </adapter>
+         <mep>push-sync</mep>
+         <inbound name="inbound_230">
+            <binding>soap</binding>
+            <operation>Tweet</operation>
+            <resourceGroup name="resourcegroup_246">
+               <resource name="resource_869" location="../resources/application_955/inbound_230/resourcegroup_246/twit_REQUEST.jca" type="jca"/>
+               <resource name="resource_711" location="../resources/application_955/inbound_230/resourcegroup_246/ICSFault.xsd" type="xsd"/>
+               <resource name="resource_127" location="../resources/application_955/inbound_230/resourcegroup_246/twit_REQUEST.wsdl" type="wsdl"/>
+            </resourceGroup>
+            <input name="input_40">
+               <role>request</role>
+               <messageContextRef refUri="messagecontext_5"/>
+            </input>
+            <output name="output_894">
+               <role>response</role>
+               <messageContextRef refUri="messagecontext_937"/>
+            </output>
+            <output name="output_359">
+               <role>fault</role>
+               <subRole>APIInvocationError</subRole>
+               <messageContextRef refUri="messagecontext_319"/>
+            </output>
+         </inbound>
+      </application>
+      <processor name="processor_75">
+         <type>transformer</type>
+         <role>transformer:response-map</role>
+         <resourceGroup name="resourcegroup_725">
+            <resource name="resource_742" location="../resources/processor_75/resourcegroup_725/req_bacc1c0972da4edb808a482812be196b.xsl" type="xslt"/>
+         </resourceGroup>
+         <input name="input_903">
+            <messageContextRef refUri="messagecontext_872"/>
+         </input>
+         <output name="output_477">
+            <messageContextRef refUri="messagecontext_604"/>
+         </output>
+         <property name="has-mappings" value="true"/>
+      </processor>
+      <processor name="processor_3">
+         <type>transformer</type>
+         <role>transformer:response-map</role>
+         <resourceGroup name="resourcegroup_795">
+            <resource name="resource_41" location="../resources/processor_3/resourcegroup_795/req_ffa609d1bd364f25b960ae32d41dcbd6.xsl" type="xslt"/>
+         </resourceGroup>
+         <input name="input_557">
+            <messageContextRef refUri="messagecontext_872"/>
+         </input>
+         <output name="output_939">
+            <messageContextRef refUri="messagecontext_573"/>
+         </output>
+         <property name="has-mappings" value="true"/>
+      </processor>
+      <processor name="processor_812">
+         <type>transformer</type>
+         <role>transformer:response-map</role>
+         <resourceGroup name="resourcegroup_934">
+            <resource name="resource_687" location="../resources/processor_812/resourcegroup_934/req_77951e01c8d14b7ab1c2bba937c7bc2a.xsl" type="xslt"/>
+         </resourceGroup>
+         <resourceRef refUri="messagecontext_207">
+            <role>secondary-source</role>
+            <subRole>restyahoo</subRole>
+         </resourceRef>
+         <input name="input_113">
+            <messageContextRef refUri="messagecontext_872"/>
+         </input>
+         <output name="output_410">
+            <messageContextRef refUri="messagecontext_5"/>
+         </output>
+         <property name="has-mappings" value="true"/>
+      </processor>
+      <processor name="processor_640">
+         <type>messageTracker</type>
+         <role>messageTracker:global</role>
+         <trackingVariableGroup>
+            <trackingVariable>
+               <primary>true</primary>
+               <name>ciudad</name>
+               <xpath>/execute/TemplateParameters/ciudad</xpath>
+               <messageContextRef refUri="messagecontext_872"/>
+            </trackingVariable>
+            <trackingVariable>
+               <primary>false</primary>
+               <name>pais</name>
+               <xpath>/execute/TemplateParameters/pais</xpath>
+               <messageContextRef refUri="messagecontext_872"/>
+            </trackingVariable>
+         </trackingVariableGroup>
+      </processor>
+      <messageContext name="messagecontext_604">
+         <resourceRef refUri="application_875/outbound_449/resourcegroup_781/resource_996"/>
+         <rootElement elementName="executeResponse" namespace="http://xmlns.oracle.com/cloud/adapter/REST/ProxyTwitterYahoo_REQUEST/types"/>
+      </messageContext>
+      <messageContext name="messagecontext_872">
+         <resourceRef refUri="application_875/outbound_449/resourcegroup_781/resource_996"/>
+         <rootElement elementName="execute" namespace="http://xmlns.oracle.com/cloud/adapter/REST/ProxyTwitterYahoo_REQUEST/types"/>
+      </messageContext>
+      <messageContext name="messagecontext_946">
+         <resourceRef refUri="application_875/outbound_449/resourcegroup_781/resource_996"/>
+         <rootElement elementName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/generic/rest/fault/REST/ProxyTwitterYahoo"/>
+      </messageContext>
+      <messageContext name="messagecontext_573">
+         <resourceRef refUri="application_113/inbound_123/resourcegroup_883/resource_830"/>
+         <rootElement elementName="execute" namespace="http://xmlns.oracle.com/cloud/adapter/REST/restyahoo_REQUEST/types"/>
+      </messageContext>
+      <messageContext name="messagecontext_207">
+         <resourceRef refUri="application_113/inbound_123/resourcegroup_883/resource_830"/>
+         <rootElement elementName="executeResponse" namespace="http://xmlns.oracle.com/cloud/adapter/REST/restyahoo_REQUEST/types"/>
+      </messageContext>
+      <messageContext name="messagecontext_329">
+         <resourceRef refUri="application_113/inbound_123/resourcegroup_883/resource_830"/>
+         <rootElement elementName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/generic/rest/fault/REST/restyahoo"/>
+      </messageContext>
+      <messageContext name="messagecontext_5">
+         <resourceRef refUri="application_955/inbound_230/resourcegroup_246/resource_127"/>
+         <rootElement elementName="Tweet" namespace="http://xmlns.oracle.com/cloud/adapter/twitter/twit/types"/>
+      </messageContext>
+      <messageContext name="messagecontext_937">
+         <resourceRef refUri="application_955/inbound_230/resourcegroup_246/resource_127"/>
+         <rootElement elementName="TweetResponse" namespace="http://xmlns.oracle.com/cloud/adapter/twitter/twit/types"/>
+      </messageContext>
+      <messageContext name="messagecontext_319">
+         <resourceRef refUri="application_955/inbound_230/resourcegroup_246/resource_127"/>
+         <rootElement elementName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/generic/rest/fault/twitter/null"/>
+      </messageContext>
+      <messageContext name="messagecontext_368">
+         <resourceRef refUri="application_113/inbound_123/resourcegroup_883/resource_830"/>
+         <rootElement elementName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/generic/rest/fault/REST/restyahoo"/>
+      </messageContext>
+      <messageContext name="messagecontext_261">
+         <resourceRef refUri="application_113/inbound_123/resourcegroup_883/resource_830"/>
+         <rootElement elementName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/generic/rest/fault/REST/restyahoo"/>
+      </messageContext>
+      <messageContext name="messagecontext_369">
+         <resourceRef refUri="application_113/inbound_123/resourcegroup_883/resource_830"/>
+         <rootElement elementName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/generic/rest/fault/REST/restyahoo"/>
+      </messageContext>
+      <messageContext name="messagecontext_755">
+         <resourceRef refUri="application_113/inbound_123/resourcegroup_883/resource_830"/>
+         <rootElement elementName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/generic/rest/fault/REST/restyahoo"/>
+      </messageContext>
+      <messageContext name="messagecontext_461">
+         <rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+      </messageContext>
+      <orchestration>
+         <receive id="r0" refUri="application_875/outbound_449/output_611"/>
+         <transformer id="m0" refUri="processor_75"/>
+         <transformer id="m1" refUri="processor_3"/>
+         <invoke id="i0" refUri="application_113"/>
+         <transformer id="m2" refUri="processor_812"/>
+         <invoke id="i1" refUri="application_955"/>
+         <reply id="y0" refUri="application_875/outbound_449/input_526"/>
+      </orchestration>
+   </ns0:icsflow>
+</ns0:icsproject>

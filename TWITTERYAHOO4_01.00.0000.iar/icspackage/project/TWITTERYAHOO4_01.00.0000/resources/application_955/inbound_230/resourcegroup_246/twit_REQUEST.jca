@@ -1,0 +1,24 @@
+<adapter-config xsdTargetNamespace="http://xmlns.oracle.com/cloud/adapter/twitter/twit/types" name="twit_REQUESTPortType" adapter="twitter" wsdlLocation="twit_REQUEST.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  <connection-factory location="cloud/CloudAdapter">
+    <non-managed-connection managedConnectionFactoryClassName="oracle.cloud.connector.twitter.TwitterAdapterConnectionFactory">
+      <property name="targetWSDLURL" value="%%TWIITERCONECTION_targetWSDLURL"/>
+      <property name="csfkey" value="a042655eafa7897210d207722b1650fa5b271d988d1fbc102935c92b2618c991"/>
+      <property name="csfMap" value="oracle.cloud.adapter"/>
+    </non-managed-connection>
+  </connection-factory>
+  <endpoint-interaction portType="twit_REQUESTPortType" operation="Tweet">
+    <interaction-spec className="oracle.tip.adapter.cloud.CloudInteractionSpec">
+      <property name="targetOperation" value="Tweet"/>
+      <property name="operationPath" value="https://api.twitter.com/1.1/statuses/update.json"/>
+      <property name="integrationSchemaNamespace" value="http://xmlns.oracle.com/cloud/adapter/twitter/twit/types"/>
+      <property name="ResponseElementNS" value="http://xmlns.oracle.com/cloud/adapter/twitter/twit/types"/>
+      <property name="queryParameters" value=" status, in_reply_to_status_id, possibly_sensitive, lat, long, place_id, display_coordinates, trim_user, media_ids"/>
+      <property name="HttpVerb" value="GET"/>
+      <property name="operation" value="Tweet"/>
+      <property name="ResponseElementName" value="tweetMessage.definitions.tweetResponse"/>
+      <property name="integrationWSDLNamespace" value="http://xmlns.oracle.com/cloud/adapter/twitter/twit"/>
+      <property name="ResponseMediaType" value="application/json"/>
+      <property name="resourceURI" value="https://api.twitter.com/1.1/statuses/update.json"/>
+    </interaction-spec>
+  </endpoint-interaction>
+</adapter-config>
